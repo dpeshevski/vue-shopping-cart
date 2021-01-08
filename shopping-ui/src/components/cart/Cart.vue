@@ -1,8 +1,12 @@
 <template>
-  <div :class="['cart', { 'opacity-1 w-screen p-4': this.isOpen, 'opacity-0 hidden p-0': !this.isOpen }]">
+  <div :class="['flex flex-col flex-shrink-0 bg-white border-l border-gray-500 h-screen absolute overflow-hidden ease-in-out duration-200 lg:flex lg:p-4 lg:w-1/4 lg:relative lg:opacity-100 shadow-xl',
+    {
+      'opacity-1 w-screen p-4': this.isOpen,
+      'opacity-0 hidden p-0': !this.isOpen
+    }]">
     <div class="cart-header">
       <div
-        class="cart-header__icon"
+        class="flex justify-center items-center left-0 cursor-pointer ml-4 absolute lg:hidden"
         @click="onClose"
         >
         <font-awesome-icon icon="angle-left" class="text-2xl" />
@@ -25,8 +29,8 @@
       </div>
     </div>
 
-    <div v-if="productsInCart.length" class="cart-footer">
-      <div class="cart-footer__amount">
+    <div v-if="productsInCart.length" class="flex flex-col justify-between xl:flex-row-reverse sm:items-center">
+      <div class="text-xl text-right font-semibold self-end w-full py-4 mb-8 border-gray-200 border-b lg:border-b-0 lg:mb-0">
         <span class="mr-8">Total Amount: </span>
         <span class="text-yellow-400">
           {{ currencySymbol }}{{ totalAmount }}
@@ -84,7 +88,7 @@
 
     @Emit()
     private onClose() {
-      this.isOpen = false;
+      this.isOpen = this.isOpen;
     }
 
     private amount(product: IProduct): number {
@@ -108,16 +112,8 @@
 </script>
 
 <style lang="postcss">
-  .cart {
-    @apply flex flex-col flex-shrink-0 bg-white border-l border-gray-500 h-screen absolute overflow-hidden ease-in-out duration-200 lg:flex lg:p-4 lg:w-1/4 lg:relative lg:opacity-100 shadow-xl;
-  }
-
   .cart-header {
     @apply flex items-center justify-center text-center w-full relative;
-  }
-
-  .cart-header__icon {
-    @apply flex justify-center items-center left-0 cursor-pointer ml-4 absolute lg:hidden;
   }
 
   .cart-section {
@@ -130,13 +126,5 @@
 
   .cart-section__items--empty {
     @apply justify-center text-center;
-  }
-
-  .cart-footer {
-    @apply flex flex-col justify-between xl:flex-row-reverse sm:items-center;
-  }
-
-  .cart-footer__amount {
-    @apply text-xl text-right font-semibold self-end w-full py-4 mb-8 border-gray-200 border-b lg:border-b-0 lg:mb-0;
   }
 </style>

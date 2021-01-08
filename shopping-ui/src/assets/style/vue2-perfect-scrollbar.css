@@ -2,7 +2,7 @@
  * Container style
  */
  .ps {
-  /* @apply h-full; */
+  @apply h-full;
   overflow: hidden !important;
   overflow-anchor: none;
   -ms-overflow-style: none;
@@ -54,7 +54,6 @@
 .ps .ps__rail-x.ps--clicking,
 .ps .ps__rail-y.ps--clicking {
   background-color: #eee;
-  /* @apply bg-gray-200; */
   opacity: 0.9;
 }
 /*
@@ -73,7 +72,6 @@
   -o-transition: background-color .2s linear, height .2s ease-in-out;
 }
 .ps__thumb-y {
-    /* @apply bg-yellow-300; */
  background-color: #aaa;
   border-radius: 6px;
   transition: background-color .2s linear, width .2s ease-in-out;
@@ -95,7 +93,6 @@
 .ps__rail-y:focus > .ps__thumb-y,
 .ps__rail-y.ps--clicking .ps__thumb-y {
   background-color: #566;
-  /* @apply bg-yellow-400; */
   width: 11px;
 }
 /* MS supports */
